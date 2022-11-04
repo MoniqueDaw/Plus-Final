@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="current-conditions">
+        <div class="city-container">
+          <div class="row">
+            <div class="col-2">Vancouver</div>
+            <div class="col-2">Edmonton</div>
+            <div class="col-2">Toronto</div>
+            <div class="col-2">Ottawa</div>
+            <div class="col-2">N.Brunswick</div>
+          </div>
+        </div>
+        <form class="d-flex justify-content-center mb-3" id="search-form">
+          <div class="row">
+            <div class="col-4">
+              <input
+                type="search"
+                class="form-control shadow-sm"
+                placeholder="Enter a city"
+                autocomplete="off"
+                id="city-input"
+              />
+            </div>
+            <div class="col-4">
+              <input
+                type="submit"
+                value="search"
+                class="btn btn-primary w-100"
+              />
+            </div>
+            <div class="col-4">
+              <button class="btn btn-secondary" id="current-location-button">
+                Your location
+              </button>
+            </div>
+          </div>
+        </form>
+        <div class="featuredCity">
+          <h1 id="city"></h1>
+          <h2 id="date"></h2>
+          <ul class="currentInfo">
+            <li><img src="" alt="" id="icon" /></li>
+            <li id="temperature">23°C</li>
+            <li id="description"></li>
+          </ul>
+          <div class="current-conditions-group">
+            <div class="row">
+              <div class="col-6">
+                wind speed<br /><span id="wind"></span>km/h
+              </div>
+              <div class="col-6">
+                humidity<br /><span id="humidity"></span>%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="forecast">
+        <h4>5-day forecast</h4>
+        <div class="row">
+          <div class="col-2">
+            <div class="card-body">
+              <h6 class="card-title">Friday</h6>
+              <p class="card-text">🌙<br />14°</p>
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="card-body">
+              <h6 class="card-title">Saturday</h6>
+              <p class="card-text">🌙<br />14°</p>
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="card-body">
+              <h6 class="card-title">Sunday</h6>
+              <p class="card-text">🌙<br />14°</p>
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="card-body">
+              <h6 class="card-title">Monday</h6>
+              <p class="card-text">🌙<br />14°</p>
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="card-body">
+              <h6 class="card-title">Tuesday</h6>
+              <p class="card-text">🌙<br />14°</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="footer">
+        <a
+          href="https://github.com/MoniqueDaw/PLUS-weather-app"
+          target="_blank"
+          rel="no referrer"
+          >Open-sourced on GitHub,
+        </a>
+        by Monique Dawod
+      </span>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
