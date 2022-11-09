@@ -26,10 +26,10 @@ h2.innerHTML = `${day} ${date} ${hours}:${minutes}`;
 
 function displayWeatherCondition(response) {
   let temp = Math.round(response.data.main.temp);
-  let temperatureElement = document.querySelector("#temp");
-  temperatureElement.innerHTML = `${temp}C`;
-  let currentCity = document.querySelector("#current-city");
-  currentCity.innerHTML = response.data.name;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  let cityElement = document.querySelector("#city");
+  cityElement.innerHTML = response.data.name;
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.weather[0].description;
   let windElement = document.querySelector("#wind");
