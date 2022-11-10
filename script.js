@@ -18,7 +18,7 @@ function formatDate(date) {
     "Friday",
     "Saturday",
   ];
-  let day = days[getDate];
+  let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
 
@@ -38,8 +38,7 @@ function displayWeatherCondition(response) {
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = response.data.main.humidity;
   let dateElement = document.querySelector("#date");
-  let currentTime = newDate();
-  dateElement.innerHTML = formatDate(newDate);
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
