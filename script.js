@@ -18,7 +18,7 @@ function formatDate(date) {
     "Friday",
     "Saturday",
   ];
-  let day = days[date.getDay()];
+  let day = days[dayIndex];
   return `${day} ${hours}:${minutes}`;
 }
 
@@ -38,7 +38,8 @@ function displayWeatherCondition(response) {
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = response.data.main.humidity;
   let dateElement = document.querySelector("#date");
-  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  let currentTime = new Date();
+  dateElement.innerHTML = formatDate(currentTime);
 
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
@@ -73,7 +74,7 @@ currentLocationButton.addEventListener("click", getPosition);
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");
-  search(cityInputElement.value);
+  searchCity(cityInputElement.value);
 }
 
 let form = document.querySelector("#search-form");
