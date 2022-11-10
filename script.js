@@ -39,7 +39,7 @@ function displayWeatherCondition(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   let dateElement = document.querySelector("#date");
   let currentTime = newDate();
-  dateElement.innerHTML = formatDate(currentTime);
+  dateElement.innerHTML = formatDate(newDate);
 
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
@@ -49,7 +49,7 @@ function displayWeatherCondition(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-function search(city) {
+function searchCity(city) {
   let apiKey = "72bb9dab46b9ec3d65f423c63f27a9b8";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherCondition);
@@ -77,7 +77,7 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-let form = document.querySelector("search-form");
+let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 function displayFahrenheitTemperature(event) {
@@ -105,4 +105,4 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelciusTemperature);
 
-search(navigator.geolocation.getCurrentPosition(showPosition));
+searchCity("Ottawa");
