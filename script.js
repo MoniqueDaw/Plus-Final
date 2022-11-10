@@ -1,5 +1,4 @@
 function formatDate(date) {
-  let date = new Date(date);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -9,6 +8,7 @@ function formatDate(date) {
     minutes = `0${minutes}`;
   }
 
+  let dayIndex = date.getDate();
   let days = [
     "Sunday",
     "Monday",
@@ -18,11 +18,12 @@ function formatDate(date) {
     "Friday",
     "Saturday",
   ];
-  let day = days[date.getDate()];
-  return `${day} ${date} ${hours}:${minutes}`;
+  let day = days[dayIndex];
+  return `${day} ${hours}:${minutes}`;
 }
 
 function displayWeatherCondition(response) {
+  console.log(response.data);
   let temp = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
@@ -35,14 +36,16 @@ function displayWeatherCondition(response) {
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = response.data.main.humidity;
   let dateElement = document.querySelector("#date");
+  let currentTime = newDate();
   dateElement.innerHTML = formatDate(currentTime);
 }
 
-let apiKey = "72bb9dab46b9ec3d65f423c63f27a9b8";
-let city = "Paris";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey = "72bb9dab46b9ec3d65f423c63f27a9b8";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-axios.get(apiUrl).then(displayWeatherCondition);
+  axios.get(apiUrl).then(displayWeatherCondition);
+}
 
 function showPosition(position) {
   let apiKey = "72bb9dab46b9ec3d65f423c63f27a9b8";
@@ -68,8 +71,6 @@ function searchCity(event) {
 
   search(cityInput.value);
 }
-
-function search(city) {}
 
 let form = document.querySelector("form");
 form.addEventListener("submit", searchCity);
