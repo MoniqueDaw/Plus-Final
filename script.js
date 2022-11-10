@@ -18,17 +18,17 @@ function formatDate(date) {
     "Friday",
     "Saturday",
   ];
-  let day = days[dayIndex];
+  let day = days[getDate];
   return `${day} ${hours}:${minutes}`;
 }
 
 function displayWeatherCondition(response) {
-  console.log(response.data);
   let temp = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
 
   celciusTemperature = response.data.main.temp;
   temperatureElement.innerHTML = Math.round(celciusTemperature);
+
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.name;
   let descriptionElement = document.querySelector("#description");
@@ -103,6 +103,6 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
+celsiusLink.addEventListener("click", displayCelciusTemperature);
 
 search(navigator.geolocation.getCurrentPosition(showPosition));
