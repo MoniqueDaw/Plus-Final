@@ -26,7 +26,9 @@ function displayWeatherCondition(response) {
   console.log(response.data);
   let temp = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+
+  celciusTemperature = response.data.main.temp;
+  temperatureElement.innerHTML = Math.round(celciusTemperature);
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.name;
   let descriptionElement = document.querySelector("#description");
@@ -38,6 +40,7 @@ function displayWeatherCondition(response) {
   let dateElement = document.querySelector("#date");
   let currentTime = newDate();
   dateElement.innerHTML = formatDate(currentTime);
+
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
@@ -76,5 +79,30 @@ function handleSubmit(event) {
 
 let form = document.querySelector("search-form");
 form.addEventListener("submit", handleSubmit);
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature = (celciusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+let celciusTemperature = null;
+
+function displayCelciusTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celciusTemperature);
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search(navigator.geolocation.getCurrentPosition(showPosition));

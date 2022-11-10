@@ -51,12 +51,18 @@
             </div>
           </div>
         </form>
-        <div class="featuredCity">
+        <div class="featured-city">
           <h1 id="city"></h1>
           <h2 id="date"></h2>
-          <ul class="currentInfo">
+          <ul class="current-info">
             <li><img src="" alt="" id="icon" /></li>
-            <li id="temperature">°C</li>
+            <li id="temperature">
+              <span class="units"
+                ><a href="#" id="celsius-link" class="active">°C</a>
+                |
+                <a href="#" id="fahrenheit-link">°F</a></span
+              >
+            </li>
             <li id="description"></li>
           </ul>
           <div class="current-conditions-group">
