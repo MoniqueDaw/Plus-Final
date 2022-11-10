@@ -19,7 +19,7 @@ function formatDate(date) {
     "Saturday",
   ];
   let day = days[date.getDate()];
-  return `${day} ${hours}:${minutes}`;
+  return `${day} ${date} ${hours}:${minutes}`;
 }
 
 function displayWeatherCondition(response) {
@@ -37,6 +37,12 @@ function displayWeatherCondition(response) {
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(currentTime);
 }
+
+let apiKey = "72bb9dab46b9ec3d65f423c63f27a9b8";
+let city = "Paris";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+axios.get(apiUrl).then(displayWeatherCondition);
 
 function showPosition(position) {
   let apiKey = "72bb9dab46b9ec3d65f423c63f27a9b8";
@@ -63,11 +69,7 @@ function searchCity(event) {
   search(cityInput.value);
 }
 
-function search(city) {
-  let apiKey = "72bb9dab46b9ec3d65f423c63f27a9b8";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayWeatherCondition);
-}
+function search(city) {}
 
 let form = document.querySelector("form");
 form.addEventListener("submit", searchCity);
