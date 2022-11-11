@@ -7,7 +7,6 @@ function formatDate(date) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-
   let dayIndex = date.getDate();
   let days = [
     "Sunday",
